@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{content}}</h1>
+    <br>
+    <a href="/home">Home</a>
+    <a href="/about">About</a>
+    <a href="/product">Product</a>
+    <a href="/contact">Contact</a>
+    <a href="/help">Help</a>
+    {% if data.Age>23 %}
+    <p>{{data.Name}}</p>
+    {% else %}
+    <p>No Name</p>
+    {% endif %}
+</body>
+</html>
