@@ -7,7 +7,8 @@ app = Flask(__name__)
 def home():
     title = 'Home page'
     content = 'Home page'
-    return render_template('home.html',title=title,content=content)
+    data = {'Name':'Javohir','Age':22}
+    return render_template('home.html',title=title,content=content,data=data)
 
 @app.route('/product')
 def product():
