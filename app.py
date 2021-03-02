@@ -1,45 +1,88 @@
 from flask import Flask
+from jinja2 import Template
 app = Flask(__name__)
 
-link = '''
-    <br>
-    <a href="/home">Home</a>
-    <a href="/about">About</a>
-    <a href="/product">Product</a>
-    <a href="/contact">Contact</a>
-    <a href="/help">Help</a>
-'''
+html_tmp = Template('''
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{content}}</h1>
+    {{link}}
+</body>
+</html>''')
 
 @app.route('/home')
 @app.route('/')
 def home():
-    title = '<h3>Home page</h1>'
-    page = f'{title}\n{link}'
-    return page
+    title = 'Home page'
+    content = '<h3>Home page</h1>'
+    link = '''
+        <br>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/product">Product</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    '''
+    return html_tmp.render(title=title,content=content,link=link)
 
 @app.route('/product')
 def product():
-    title = '<h3>Product page</h1>'
-    page = f'{title}\n{link}'
-    return page
+    title = 'Product page'
+    content = '<h3>Product page</h1>'
+    link = '''
+        <br>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/product">Product</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    '''
+    return html_tmp.render(title=title,content=content,link=link)
 
 @app.route('/contact')
 def contact():
-    title = '<h3>Contact page</h1>'
-    page = f'{title}\n{link}'
-    return page
+    title = 'content page'
+    content = '<h3>Contact page</h1>'
+    link = '''
+        <br>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/product">Product</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    '''
+    return html_tmp.render(title=title,content=content,link=link)
 
 @app.route('/about')
 def about():
-    title = '<h3>About page</h1>'
-    page = f'{title}\n{link}'
-    return page
+    title = 'About page'
+    content = '<h3>About page</h1>'
+    link = '''
+        <br>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/product">Product</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    '''
+    return html_tmp.render(title=title,content=content,link=link)
 
 @app.route('/help')
 def help():
-    title = '<h3>Help page</h1>'
-    page = f'{title}\n{link}'
-    return page
+    title = 'Help page'
+    content = '<h3>Help page</h1>'
+    link = '''
+        <br>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/product">Product</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    '''
+    return html_tmp.render(title=title,content=content,link=link)
 
 if __name__ == "__main__":
     app.run(debug=True)
